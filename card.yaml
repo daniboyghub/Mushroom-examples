@@ -1,0 +1,94 @@
+      - type: custom:vertical-stack-in-card
+        mode: vertical
+        cards:
+          - type: custom:mushroom-template-card
+            layout: horizontal
+            primary: Hall & Aisle
+            entity: sensor.ewelink_th01_1debcd24_temperature
+            multiline_secondary: true
+            secondary: >-
+              {{ states('sensor.ewelink_th01_1debcd24_temperature') }}°C | {{
+              states('sensor.ewelink_th01_1debcd24_humidity') }} % | {{
+              states('sensor.ewelink_th01_1debcd24_power')}} %  
+            icon: mdi:town-hall
+            tap_action:
+              action: navigate
+              navigation_path: default_view
+            theme: ios-dark-mode-dark-green
+          - type: custom:vertical-stack-in-card
+            horizontal: true
+            cards:
+              - type: custom:mushroom-template-card
+                entity: switch.hall_lights_channel_2
+                layout: vertical
+                icon: |-
+                  {% if is_state('switch.hall_lights_channel_2', 'on') %}
+                    mdi:outdoor-lamp
+                  {% else %}
+                    mdi:outdoor-lamp
+                  {% endif %}
+                icon_color: |-
+                  {% if is_state('switch.hall_lights_channel_2', 'on') %}
+                    yellow
+                  {% endif %}
+                theme: ios-dark-mode-dark-green
+              - type: custom:mushroom-template-card
+                entity: switch.hall_lights_channel_1
+                layout: vertical
+                icon: |-
+                  {% if is_state('switch.hall_lights_channel_1', 'on') %}
+                    mdi:lightbulb-spot
+                  {% else %}
+                    mdi:lightbulb-spot
+                  {% endif %}
+                icon_color: |-
+                  {% if is_state('switch.hall_lights_channel_1', 'on') %}
+                    yellow
+                  {% endif %}
+                theme: ios-dark-mode-dark-green
+              - type: custom:mushroom-template-card
+                entity: light.hall_wc_channel_1
+                layout: vertical
+                icon: |-
+                  {% if is_state('light.hall_wc_channel_1', 'on') %}
+                    mdi:lightbulb
+                  {% else %}
+                    mdi:lightbulb
+                  {% endif %}
+                icon_color: |-
+                  {% if is_state('light.hall_wc_channel_1', 'on') %}
+                    yellow
+                  {% endif %}
+                theme: ios-dark-mode-dark-green
+              - type: custom:mushroom-template-card
+                entity: switch.hall_wc_channel_2
+                layout: vertical
+                icon: |-
+                  {% if is_state('switch.hall_wc_channel_2', 'on') %}
+                    mdi:fan
+                  {% else %}
+                    mdi:fan
+                  {% endif %}
+                icon_color: |-
+                  {% if is_state('switch.hall_wc_channel_2', 'on') %}
+                    yellow
+                  {% endif %}
+                theme: ios-dark-mode-dark-green
+              - type: custom:mushroom-template-card
+                entity: binary_sensor.livingroom_window_ias_zone
+                layout: vertical
+                icon: >-
+                  {% if is_state('binary_sensor.livingroom_window_ias_zone',
+                  'on') %}
+                    phu:panel-frontdoor-open
+                  {% else %}
+                    phu:panel-frontdoor-close
+                  {% endif %}
+                icon_color: >-
+                  {% if
+                  is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_on_off',
+                  'on') %}
+                    yellow
+                  {% endif %}
+            theme: ios-dark-mode-dark-green
+        theme: ios-dark-mode-dark-green
