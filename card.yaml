@@ -12,8 +12,11 @@
               states('sensor.ewelink_th01_1debcd24_power')}} %  
             icon: mdi:town-hall
             tap_action:
-              action: navigate
-              navigation_path: default_view
+              action: more-info
+# if you want to jump to another Dashboard dedicated per area for example
+#            tap_action:
+#              action: navigate
+#              navigation_path: default_view
             theme: ios-dark-mode-dark-green
           - type: custom:vertical-stack-in-card
             horizontal: true
