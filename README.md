@@ -46,3 +46,9 @@ Code that allow you to change icon colour depending on the state
             yellow
           {% endif %}
         theme: ios-dark-mode-dark-green
+
+
+For the person card (in progress). The color of the icons are not changing according withe the status. check the file "Mushroom_Person_Example.yaml"
+![Screen Shot 2022-06-15 at 19 14 19](https://user-images.githubusercontent.com/24855529/173897151-f9af62e3-b7e0-453f-ac53-890314512620.png)
+
+
