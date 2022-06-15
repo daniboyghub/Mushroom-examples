@@ -5,7 +5,7 @@
 Please see the example of this image in the file "Mushroom_Area_card.yaml"
 
 Create a Card where we can use several mushrooms - custom:vertical-stack-in-card
-on first line will have a custom:mushroom-template-card with "primary" as Title and "secondary" for extra data
+On the first line will have a custom:mushroom-template-card with "primary" as Title and "secondary" for extra data
 
 
     secondary: >-
@@ -64,7 +64,7 @@ if you want to create ghost buttons  to create spaces, inside the vertical-stack
 
 
 
-For the person card (in progress). The color of the icons are not changing according withe the status. check the file "Mushroom_Person_Example.yaml"
+For the person card (in progress). The colour of the icons are not changing according to the status. check the file "Mushroom_Person_Example.yaml"
 
 ![Screen Shot 2022-06-15 at 19 14 19](https://user-images.githubusercontent.com/24855529/173897151-f9af62e3-b7e0-453f-ac53-890314512620.png)
 
