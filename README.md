@@ -2,6 +2,8 @@
 
 ![image](https://user-images.githubusercontent.com/24855529/170824801-560c966c-eccb-4e17-b4f3-2d5891aad5f3.png)
 
+Please see the example of this image in the file "Mushroom_Area_card.yaml"
+
 Create a Card where we can use several mushrooms - custom:vertical-stack-in-card
 on first line will have a custom:mushroom-template-card with "primary" as Title and "secondary" for extra data
 
