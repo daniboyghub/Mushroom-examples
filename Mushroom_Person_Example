@@ -13,38 +13,57 @@ cards:
       }
   - type: custom:mushroom-chips-card
     chips:
-      - type: entity
-        entity: binary_sensor.sm_a528b_is_charging
-        content_info: null
-        card_mod: null
+      - type: template
+        entity: sensor.sm_a528b_battery_state
+        content: '{{ states(entity) }}'
+        icon: |
+          {% set DanChaState=states('sensor.sm_a528b_battery_state')%} 
+          {% if DanChaState=='charging' %}  
+          mdi:battery-charging 
+          {% elif DanChaState=='discharging'%}  
+          mdi:battery-alert 
+          {% endif %}
+        icon_color: |-
+          {% set DanChaState=states('sensor.sm_a528b_battery_state')%}  
+          {% if DanChaState=='charging' %}   
+          green  
+          {% elif DanChaState=='discharging' %}   
+          yellow  
+          {% endif %}
         style: |
           ha-card {
             box-shadow: 0px 0px;
           }
-        icon_color: >-
-          {% set state=states('binary_sensor.sm_a528b_is_charging') %} {% if
-          state=='desligado' %}   
-            green   
-          {% else %}
-            yellow   
-          {% endif %}
-      - type: entity
+      - type: template
         entity: sensor.sm_a528b_battery_level
-        content_info: null
-        card_mod: null
+        content: '{{ states(entity) }}%'
+        icon: |
+          {% set bl = states('sensor.sm_a528b_battery_level') | int %}
+          {% if bl < 10 %} mdi:battery-outline
+          {% elif bl < 20 %} mdi:battery-10
+          {% elif bl < 30 %} mdi:battery-20
+          {% elif bl < 40 %} mdi:battery-30
+          {% elif bl < 50 %} mdi:battery-40
+          {% elif bl < 60 %} mdi:battery-50
+          {% elif bl < 70 %} mdi:battery-60
+          {% elif bl < 80 %} mdi:battery-70
+          {% elif bl < 90 %} mdi:battery-80
+          {% elif bl < 100 %} mdi:battery-90
+          {% elif bl == 100 %} mdi:battery
+          {% else %} mdi:battery-unknown
+          {% endif %}
+        icon_color: |-
+          {% set bl=states('sensor.sm_a528b_battery_level') | int %}  
+          {% if bl<=100 %} #006400   
+          {% elif bl<80 %} #ADFF2F
+          {% elif bl<50 %} #808000
+          {% elif bl<20 %} #FFFF00
+          {% else %} #A9A9A9
+          {% endif %}
         style: |
           ha-card {
             box-shadow: 0px 0px;
           }
-        icon_color: >-
-          {% set state=states('sensor.sm_a528b_battery_level') %}  {% if
-          state>'80' %}   
-            green   
-          {% elseif state<'30' %}   
-            red
-          {% else %}   
-            yellow
-          {% endif %}
       - type: entity
         entity: sensor.sm_a528b_ringer_mode
         content_info: null
