@@ -15,7 +15,13 @@ cards:
     chips:
       - type: template
         entity: sensor.sm_a528b_battery_state
-        content: '{{ states(entity) }}'
+        content: |
+          {% set DanChaState=states('sensor.sm_a528b_battery_state')%} 
+          {% if DanChaState=='charging' %}  
+          Charging
+          {% elif DanChaState=='discharging'%}  
+          Not Charging
+          {% endif %}
         icon: |
           {% set DanChaState=states('sensor.sm_a528b_battery_state')%} 
           {% if DanChaState=='charging' %}  
@@ -53,12 +59,21 @@ cards:
           {% else %} mdi:battery-unknown
           {% endif %}
         icon_color: |-
-          {% set bl=states('sensor.sm_a528b_battery_level') | int %}  
-          {% if bl<=100 %} #006400   
-          {% elif bl<80 %} #ADFF2F
-          {% elif bl<50 %} #808000
-          {% elif bl<20 %} #FFFF00
-          {% else %} #A9A9A9
+          {% set bl=states('sensor.sm_a528b_battery_level') | int %}
+          {% if bl>80 %}
+           #006400
+          {% elif bl>70 %}
+           #ADFF2F
+          {% elif bl>50 %}
+           #808000
+          {% elif bl>30 %}
+           #808000
+          {% elif bl>20 %}
+           orange
+          {% elif bl>0 %}
+           red
+          {% else %}
+           #A9A9A9
           {% endif %}
         style: |
           ha-card {
