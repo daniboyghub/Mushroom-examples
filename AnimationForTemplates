@@ -1,12 +1,15 @@
         card_mod:
           style: |
-            ha-card {
-              animation: blink 3s linear infinite;
-            }
-            @keyframes blink {
-              50% {opacity: 0;}
-            }
-
+            {% if is_state('binary_sensor.ewelink_ds01_fc590b25_ias_zone', 'on')%}
+              ha-card {
+                animation: blink 3s linear infinite;
+              }
+              @keyframes blink {
+                50% {opacity: 0;}
+              }
+            {% endif %}
+            
+        card_mod:
           style:
             mushroom-shape-icon:
               $: |
