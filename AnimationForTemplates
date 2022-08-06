@@ -1,0 +1,33 @@
+        card_mod:
+          style: |
+            ha-card {
+              animation: blink 3s linear infinite;
+            }
+            @keyframes blink {
+              50% {opacity: 0;}
+            }
+
+          style:
+            mushroom-shape-icon:
+              $: |
+                .shape ha-icon {
+                    {% set state = states('binary_sensor.ewelink_ds01_fc590b25_ias_zone') %}
+                    {% if state == 'on' %}
+                      --icon-animation: wobbling 0.3s ease-in-out infinite alternate;
+                    {% endif %}
+                  }
+                  @keyframes wobbling {
+                    0% {
+                      transform: rotate(-10deg);
+                    }
+                    100% {
+                      transform: rotate(10deg);
+                    }
+                  }
+              .: |
+                ha-card {
+                  width: 66px;
+                  border-radius: 30px;
+                  margin-left: auto;
+                  margin-right: auto;
+                }
