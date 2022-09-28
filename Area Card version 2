@@ -1,0 +1,180 @@
+type: custom:vertical-stack-in-card
+mode: vertical
+view_layout:
+  grid-area: col1
+cards:
+  - type: custom:mushroom-template-card
+    layout: horizontal
+    primary: Kitchen
+    entity: sensor.ewelink_th01_388a0325_kitchen_temperature
+    multiline_secondary: true
+    secondary: >-
+      {{ states('sensor.ewelink_th01_388a0325_kitchen_temperature') }}°C | {{
+      states('sensor.ewelink_th01_388a0325_humidity') }} % | {{
+      states('sensor.ewelink_th01_388a0325_power')}} %  
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-ogatodasbotas/Kitchen
+    style: |
+      mushroom-shape-icon {
+        --shape-color: none !important;
+        --shape-color-disabled: none !important;
+        
+      }
+      :host {
+        font-weight: bold;
+        text-align: center;
+        --primary-text-color: ;
+        --secondary-text-color: ;
+        
+      }
+      ha-card {
+        --card-primary-font-size: 30px;
+        --primary-text-color: white;
+        --card-secondary-font-size: 14px;
+        --secondary-text-color: lightgrey;
+        background: transparent;
+        width: px;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2px;
+        --icon-border-radius: 0;
+        --icon-size: 84px;
+        min-height: 140px;
+        {% if now().hour >= 7 and now().hour <= 17%} 
+          background: var(--card-background-color) url('/local/background/Kitchen Day.jpg')
+        {% else %} 
+          background: var(--card-background-color) url('/local/background/Kitchen Day.jpg')
+        {% endif %}
+        no-repeat center 0px;
+        background-size: cover;
+        background-blend-mode: overlay;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+  - type: custom:vertical-stack-in-card
+    horizontal: true
+    cards:
+      - type: custom:mushroom-template-card
+        entity: light.kitchen_lights
+        layout: vertical
+        icon: |-
+          {% if is_state('light.kitchen_lights', 'on') %}
+            phu:ceiling-lamp
+          {% else %}
+            phu:ceiling-lamp
+          {% endif %}
+        icon_color: |-
+          {% if is_state('light.kitchen_lights', 'on') %}
+            yellow
+          {% endif %}
+      - type: custom:mushroom-template-card
+        entity: switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_3
+        layout: vertical
+        icon: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_3',
+          'on') %}
+            mdi:coffee
+          {% else %}
+            mdi:coffee-off
+          {% endif %}
+        icon_color: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_3',
+          'on') %}
+            yellow
+          {% endif %}
+      - type: custom:mushroom-template-card
+        entity: switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off
+        layout: vertical
+        icon: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off', 'on')
+          %}
+            mdi:chef-hat
+          {% else %}
+            mdi:chef-hat
+          {% endif %}
+        icon_color: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off', 'on')
+          %}
+            yellow
+          {% endif %}
+      - type: custom:mushroom-template-card
+        entity: switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_2
+        layout: vertical
+        icon: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_2',
+          'on') %}
+            mdi:cake-variant
+          {% else %}
+            mdi:cake-variant
+          {% endif %}
+        icon_color: >-
+          {% if is_state('switch.tz3000_1obwwnmq_ts011f_54bc90fe_on_off_2',
+          'on') %}
+            yellow
+          {% endif %}
+      - type: custom:mushroom-template-card
+        entity: false
+        layout: vertical
+        icon: false
+        icon_color: false
+      - type: custom:mushroom-template-card
+        entity: binary_sensor.lumi_lumi_sensor_wleak_aq1_26fc4b02_ias_zone
+        layout: vertical
+        icon: >-
+          {% if
+          is_state('binary_sensor.lumi_lumi_sensor_wleak_aq1_26fc4b02_ias_zone',
+          'on') %}
+            mdi:water-alert
+          {% else %}
+            mdi:water
+          {% endif %}
+        icon_color: >-
+          {% if
+          is_state('binary_sensor.lumi_lumi_sensor_wleak_aq1_26fc4b02_ias_zone',
+          'on') %}
+            yellow
+          {% endif %}
+        card_mod:
+          style: >
+            {% if
+            is_state('binary_sensor.lumi_lumi_sensor_wleak_aq1_26fc4b02_ias_zone',
+            'on')%}
+              ha-card {
+                animation: blink 3s linear infinite;
+              }
+              @keyframes blink {
+                50% {opacity: 0;}
+              }
+            {% endif %}
+      - type: custom:mushroom-template-card
+        entity: binary_sensor.lumi_lumi_sensor_magnet_aq2_45d7bf02_on_off
+        layout: vertical
+        icon: >-
+          {% if
+          is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_45d7bf02_on_off',
+          'on') %}
+            mdi:window-open-variant
+          {% else %}
+            mdi:window-closed-variant
+          {% endif %}
+        icon_color: >-
+          {% if
+          is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_45d7bf02_on_off',
+          'on') %}
+            yellow
+          {% endif %}
+        card_mod:
+          style: >
+            {% if
+            is_state('binary_sensor.lumi_lumi_sensor_magnet_aq2_45d7bf02_on_off',
+            'on')%}
+              ha-card {
+                animation: blink 3s linear infinite;
+              }
+              @keyframes blink {
+                50% {opacity: 0;}
+              }
+            {% endif %}
